@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<package name="question" extends="struts-default">
+		<global-results>
+			<result name="login">/admin/login.jsp</result>
+		</global-results>
+
+		<action name="questionAction" class="com.active.feedback.action.QuestionCreateAction">
+			<result name="success">question_management.jsp</result>
+			<result name="input">question_answer.jsp</result>
+			<result name="edit">question_edit.jsp</result>
+			<result name="edit_answer">question_answer_edit.jsp</result>
+		</action>
+		
+		<action name="answerAction" class="com.active.feedback.action.AnswerCreateAction">
+			<result name="success">question_management.jsp</result>
+			<result name="input">answer.jsp</result>
+		</action>
+		<action name="surveyAction" class="com.active.feedback.action.SurveySettingAction">
+			<result name="success">survey.jsp</result>
+			<result name="input">survey_setting.jsp</result>
+		</action>
+		
+		<action name="surveyCreateAction" class="com.active.feedback.action.SurveyCreateAction">
+			<result name="success">question_management.jsp</result>
+		</action>
+		
+		<action name="surveyEditAction" class="com.active.feedback.action.SurveyEditAction">
+			<result name="success">question_management.jsp</result>
+			<result name="input">survey_edit.jsp</result>
+		</action>
+		<action name="reportAction" class="com.active.feedback.action.SurveyReportAction" >
+			<result name="success">survey_report.jsp</result>
+		</action>
+		
+		<action name="logoutAction" class="com.active.feedback.action.LogoutAction" >
+			<result name="success">/admin/login.jsp</result>
+		</action>
+		
+		<action name="teamSCEAction" class="com.active.feedback.action.TeamSCEAction" >
+			<result name="input">team_edit.jsp</result>
+			<result name="success">member.jsp</result>
+		</action>
+		
+		<action name="memberADUAction" class="com.active.feedback.action.MemberADUAction" >
+			<result name="input">member.jsp</result>
+			<result name="success">member_info.jsp</result>
+		</action>
+		
+		<action name="memberInfoCEAction" class="com.active.feedback.action.MemberInfoCEAction" >
+			<result name="success">member.jsp</result>
+		</action>
+		
+		<action name="sendEmailAction" class="com.active.feedback.action.SendEmailAction" >
+			<result name="success">survey_setting_home.jsp</result>
+		</action>
+		
+		<action name="reportTeamAction" class="com.active.feedback.action.SurveyReportTeamAction" >
+			<result name="success">survey_report_team.jsp</result>
+		</action>
+		
+	</package>
+
+
+	<!-- Add packages here -->
+
+</struts>

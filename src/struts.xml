@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<include file="structs-admin.xml" />
+	<package name="basic" extends="struts-default">
+		<action name="login" class="com.active.feedback.action.LoginAction">
+			<result name="success">admin.jsp</result>
+			<result name="input">admin.jsp</result>	
+		</action>
+		<action name="teamselected" class="com.active.feedback.action.TeamSelectedAction">
+			<result name="success">survey.jsp</result>
+		</action>
+		<action name="completeAction" class="com.active.feedback.action.QuestionCompleteAction">
+			<result name="success">index.jsp</result>
+		</action>
+		
+	</package>
+
+	<!-- Add packages here -->
+
+</struts>

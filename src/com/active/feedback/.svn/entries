@@ -1,0 +1,84 @@
+10
+
+dir
+0
+https://github.com/jguo317/feedback/trunk/src/com/active/feedback
+https://github.com/jguo317/feedback/trunk
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+61a016d9-65c5-7005-7300-ce57b7db7bff
+
+impl
+dir
+
+
+
+add
+
+JDBC
+dir
+
+
+
+add
+
+dao
+dir
+
+
+
+add
+
+entities
+dir
+
+
+
+add
+
+bean
+dir
+
+
+
+add
+
+email
+dir
+
+
+
+add
+
+action
+dir
+
+
+
+add
+
+util
+dir
+
+
+
+add
+
