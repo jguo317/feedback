@@ -36,17 +36,27 @@
 			}		
 		}
 		questionFrm.team_id.value = selectedValue;
-		
 		var obj = questionFrm.select_member;
 		var i = obj.selectedIndex; 
 		selectedValue = 0;
-		for (;i<obj.length;i++) {			
-			if (obj.options[i].selected) {
-				selectedValue = obj.options[i].value;
-				break;
-			}		
+		if (i > -1) {
+			for (;i<obj.length;i++) {			
+				if (obj.options[i].selected) {
+					selectedValue = obj.options[i].value;
+					break;
+				}		
+			}
 		}
 		questionFrm.member_id.value = selectedValue;
+		questionFrm.hidden_members.value = questionFrm.hidden_members.value + ";" + selectedValue;
+		if (selectedValue == 0) {
+			if(confirm("do you like to fill the survey again?")){
+				var questionFrm = document.getElementById("questionFrm");
+				questionFrm.hidden_members.value = ""
+			}else{
+				closeWin();
+			}
+		}
 	}
 	
 	function showMsg(){
@@ -79,6 +89,7 @@ function closeWin() {
 	<input type="hidden" name="survey_id" value="<s:property value='survey_id'/>">
 	<input type="hidden" name="team_id" value="0"> 
 	<input type="hidden" name="member_id" value="0">
+	<input type="hidden" name="hidden_members" value="<s:property value='hidden_members'/>" />;
 <table border="0"
 	style="width: 100%; height: 100%; overflow-y: auto; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
 	<tr>
@@ -95,7 +106,7 @@ function closeWin() {
 		</s:if>		
 		<s:else>
 		<td width="50%" align="center" style="border-bottom: 1px solid;">
-		Please Select Team: <select id="select_id" name="select_team"
+		Select Your Team: <select id="select_id" name="select_team"
 			onchange="changeTeam();">
 			<s:iterator value="tList" status="st">
 				<option id="<s:property value='id' />"
@@ -105,7 +116,7 @@ function closeWin() {
 			</s:iterator>
 		</select></td>
 		<td width="50%" align="center" style="border-bottom: 1px solid;">
-		Please Select Member: <select id="select_id" name="select_member">
+		Select the member you like to comment: <select id="select_id" name="select_member">
 			<s:iterator value="uList" status="st">
 				<option id="<s:property value='id' />"
 					value="<s:property value='id' />"><s:property
@@ -124,7 +135,7 @@ function closeWin() {
 				<s:set name="qt_name" value="qt.name" />
 				<s:set name="q_id" value="id" />
 				<s:if test="%{#qt_name=='text'}">
-					<input type="text" name="text_<s:property value='id'/>" value="" />
+					<textarea name="text_<s:property value='id'/>" ></textarea>
 				</s:if>
 				<s:elseif test="%{#qt_name=='radio'}">
 					<s:iterator value="qdList" status="st">
@@ -150,9 +161,10 @@ function closeWin() {
 		</td>
 	</tr>
 </table>
-<div align="center" style="margin-top: 10px; margin-bottom:0px;"><input type="reset"
-	value=" Cancel ">&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit"
-	id="submit" value=" Complete" onclick="showMsg()"></div>
+<div align="center" style="margin-top: 10px; margin-bottom:0px;">
+	<input type="submit" value="Save & Continue" onclick="continueSurvey()">&nbsp;&nbsp;&nbsp;&nbsp; 
+	<input type="submit" id="close" value=" Close " onclick="closeWin()">
+</div>
 </form>
 </div>
 <!--/block withsidebar--> <%@ include file="/common/footer.jsp"%>

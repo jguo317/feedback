@@ -38,8 +38,6 @@
 		if (validate()) {
 			document.getElementById("q_form_action").value = "edit_save";
 			document.getElementById("q_type").value = getRadioValue("qt_radio");
-			alert(document.getElementById("q_type").value)
-			alert(document.getElementById("q_id").value)
 			document.getElementById("q_from").submit();
 		}
 	}
@@ -107,7 +105,9 @@
 					</tr>
 					<tr>
 						<td>Question Name:</td>
-						<td><input type="text" value="<s:property value='q_name' />" name="q_name" id="q_name"></td>
+						<td>
+						<textarea name="q_name" id="q_name"><s:property value='q_name' /></textarea>
+						</td>
 					</tr>
 				</table>
 				
@@ -115,7 +115,7 @@
 			</td></tr>
 			<tr><td>
 				<table align="right">
-					<tr><td><input type="button" value="Next" id="next" onclick="clickNext();"></td>
+					<tr><td><input type="button" value="Next" id="next" <s:if test="%{q_type==3}">disabled</s:if> onclick="clickNext();"></td>
 					<td><input type="button" value="Save" id="save" onclick="clickSave();"></td></tr>
 				</table>
 			</td></tr>

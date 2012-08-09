@@ -17,7 +17,8 @@
 			<result name="success">survey.jsp</result>
 		</action>
 		<action name="completeAction" class="com.active.feedback.action.QuestionCompleteAction">
-			<result name="success">index.jsp</result>
+			<result type="redirect">/front/teamselected.action?survey_id=${survey_id}&amp;hidden_members=${hidden_members}</result>
+			<!--<result name="success">teamselected</result>-->
 		</action>
 		
 	</package>

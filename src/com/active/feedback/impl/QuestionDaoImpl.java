@@ -30,14 +30,15 @@ public class QuestionDaoImpl implements QuestionDao{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "insert into questions (q_name, q_frn_qt_id) values ('"
-					+ question.getName() + "'," + question.getQt().getId() + ") select @@IDENTITY as 'new_id'";
-				
+		String sql = "insert into questions (q_name, q_frn_qt_id) values (?, ?) select @@IDENTITY as 'new_id'";
+		System.out.println(sql);		
 		try{
 			Class.forName(JDBCConstant.dbDriverName).newInstance();
 			conn = DriverManager.getConnection(JDBCConstant.dbUrl, JDBCConstant.dbUserName, JDBCConstant.dbPassword);
 			conn.setAutoCommit(true);
 			ps = conn.prepareStatement(sql);
+			ps.setString(1, question.getName());
+			ps.setInt(2, question.getQt().getId());
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				question.setId(rs.getInt("new_id"));
@@ -90,13 +91,14 @@ public class QuestionDaoImpl implements QuestionDao{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "update questions set q_name = '" + question.getName() + "',q_frn_qt_id = " + question.getQt().getId() + " where q_id = " + String.valueOf(question.getId());
+		String sql = "update questions set q_name = ?,q_frn_qt_id = " + question.getQt().getId() + " where q_id = " + String.valueOf(question.getId());
 				
 		try{
 			Class.forName(JDBCConstant.dbDriverName).newInstance();
 			conn = DriverManager.getConnection(JDBCConstant.dbUrl, JDBCConstant.dbUserName, JDBCConstant.dbPassword);
 			conn.setAutoCommit(true);
 			ps = conn.prepareStatement(sql);
+			ps.setString(1, question.getName());
 			ps.execute();
           }catch(Exception e){
              System.out.println("Exception occurs in SurveyDaoImpl.add()");

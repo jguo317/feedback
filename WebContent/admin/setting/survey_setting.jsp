@@ -58,22 +58,26 @@
 	</tr>
 	<tr>
 		<td>Questions:</td>
-		<td ><select name="questions" size="6" >
+		<td>
+		<select name="questions" size="6">
 			<s:iterator value="qList" status="st">
 				<option value="<s:property value='id' />"><s:property
 					value='name' /></option>
 			</s:iterator>
-		</select></td>
+		</select>
+		</td>
 	</tr>
 	<tr>
 		<td>Select Teams:</td>
-		<td><select name="teams" size="5" multiple id="team_id">
+		<td>
+		<select name="teams" size="5" multiple id="team_id">
 			<s:iterator value="tList" status="st">
 				<option value="<s:property value='id' />"
 					<s:if test = "%{selected}">selected</s:if>><s:property
 					value='name' /></option>
 			</s:iterator>
-		</select></td>
+		</select>
+		</td>
 	</tr>
 	<tr>
 		<td>Survey For Members:</td>
@@ -83,9 +87,10 @@
 				<input type="radio" name="memberSurvey" value="0">No
 			</s:if>
 			<s:else>
-				<input type="radio" name="memberSurvey" value="1"   >Yes
-				<input type="radio" name="memberSurvey" value="0" checked>No
-			</s:else>			
+				<input type="radio" name="memberSurvey" value="1" >Yes
+				&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="memberSurvey" value="0" checked>No
+			</s:else>
+			&nbsp;(<font color='red'>No means the survey will be for team.</font>)			
 		</td>
 	</tr>
 	<tr>

@@ -33,9 +33,11 @@ public class QuestionCompleteAction extends ActionSupport {
 	private int survey_id;
 	private int team_id;
 	private int member_id;
+	private String hidden_members;
 
 	public String execute() {
 		handleRequest();
+		System.out.println("hidden_members=========" + hidden_members);
 		return SUCCESS;
 	}
 	
@@ -125,5 +127,13 @@ public class QuestionCompleteAction extends ActionSupport {
 
 	public void setMember_id(int member_id) {
 		this.member_id = member_id;
+	}
+
+	public String getHidden_members() {
+		return hidden_members;
+	}
+
+	public void setHidden_members(String hidden_members) {
+		this.hidden_members = hidden_members;
 	}
 }

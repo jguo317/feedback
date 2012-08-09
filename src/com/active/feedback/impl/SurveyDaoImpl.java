@@ -548,7 +548,7 @@ public class SurveyDaoImpl implements SurveyDao{
 			
 			if (ps != null) ps.close();
 			
-			sql = "select q_id, answer_value from questions with(nolock) join question_types with(nolock) on q_frn_qt_id = qt_id and qt_name = 'text' join surveys_to_questions with(nolock) on stq_frn_q_id = q_id and stq_frn_survey_id = ? left join answers with(nolock) on answer_frn_q_id = q_id and answer_frn_survey_id = stq_frn_survey_id";
+			sql = "select q_id, answer_value from questions with(nolock) join question_types with(nolock) on q_frn_qt_id = qt_id and qt_name = 'text' join surveys_to_questions with(nolock) on stq_frn_q_id = q_id and stq_frn_survey_id = ? left join answers with(nolock) on answer_frn_q_id = q_id and answer_frn_survey_id = stq_frn_survey_id and answer_value is not null and answer_value != ''";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();

@@ -109,7 +109,7 @@ public class AnswerDaoImpl implements AnswerDao{
 										"answer_frn_survey_id, " +
 										"answer_frn_user_id, " +
 										"answer_timestamp) " +										
-										" values ('"+b.getAnswerValue()+"'," + b.getQuestionId()+
+										" values ('"+b.getAnswerValue().replaceAll("'", "''")+"'," + b.getQuestionId()+
 										"," + suerveyId +
 										"," + userId +
 										"," +
@@ -137,7 +137,7 @@ public class AnswerDaoImpl implements AnswerDao{
 							"getdate())";
 						}
 					}
-					
+					System.out.println(qq);
 					ps = conn.prepareStatement(qq);
 					ps.execute();							
 				} catch(Exception e){

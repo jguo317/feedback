@@ -112,6 +112,11 @@ public class QuestionCreateAction extends ActionSupport {
 		Question q = qd.getQuestionById(q_id);
 		this.setQ_name(q.getName());
 		this.setQ_type(q.getQt().getId());
+		Map sessionMap = ActionContext.getContext().getSession();
+		int survey_id = (Integer)sessionMap.get("survey_id");
+		SurveyDao sd = new SurveyDaoImpl();
+		Survey survey = sd.getSurveyById(survey_id);
+		this.setSurveyTitle(survey.getTitle());
 	}
 	
 	private void editQuestion() {
@@ -122,6 +127,11 @@ public class QuestionCreateAction extends ActionSupport {
 		q.setName(this.q_name);
 		q.setQt(qt);
 		qd.Update(q);
+		Map sessionMap = ActionContext.getContext().getSession();
+		int survey_id = (Integer)sessionMap.get("survey_id");
+		SurveyDao sd = new SurveyDaoImpl();
+		Survey survey = sd.getSurveyById(survey_id);
+		this.setSurveyTitle(survey.getTitle());
 	}
 	
 	public String execute() {

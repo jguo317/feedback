@@ -25,7 +25,7 @@
 		<td><input type="password" name="password" size="20"></td>
 	</tr>
 	<tr align="center" >
-		<td colspan="2"><input type="reset" value="Cancle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Login" onclick="self.location=’admin.jsp’;" ></td>
+		<td colspan="2"><input type="submit" value="Login" onclick="self.location=’admin.jsp’;" ></td>
 	</tr>
 </table>
 </form>

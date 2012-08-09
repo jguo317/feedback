@@ -98,7 +98,9 @@
 					</tr>
 					<tr>
 						<td>Question Name:</td>
-						<td><input type="text" value="" name="q_name" id="q_name"></td>
+						<td>
+						<textarea name="q_name" id="q_name"></textarea>
+						</td>
 					</tr>
 				</table>
 				

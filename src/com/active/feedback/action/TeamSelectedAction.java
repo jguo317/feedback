@@ -31,6 +31,7 @@ public class TeamSelectedAction extends ActionSupport {
 	private List<User> uList;
 	private int survey_id;
 	private int memberSurvey;
+	private String hidden_members;
 	
 	private QuestionDao qDao = new QuestionDaoImpl();
 
@@ -48,6 +49,18 @@ public class TeamSelectedAction extends ActionSupport {
 		}
 		TeamDao tDao = new TeamDaoImpl();
 		uList = tDao.getMembersByTeamId(team_id);
+		if (hidden_members != null) {
+			String[] hidden = hidden_members.split(";");
+			for (int i = 0; i < hidden.length; i++) {
+				if (!hidden[i].equals("")) {
+					for (int j = 0; j<uList.size(); j++) {
+						if (uList.get(j).getId() == Integer.parseInt(hidden[i])) {
+							uList.remove(j);
+						}
+					}
+				}
+			}
+		}
 		qList = sDao.getQuestionsBySurveyId(survey_id);
 
 		return SUCCESS;
@@ -115,5 +128,13 @@ public class TeamSelectedAction extends ActionSupport {
 
 	public void setMemberSurvey(int memberSurvey) {
 		this.memberSurvey = memberSurvey;
+	}
+
+	public String getHidden_members() {
+		return hidden_members;
+	}
+
+	public void setHidden_members(String hidden_members) {
+		this.hidden_members = hidden_members;
 	}
 }

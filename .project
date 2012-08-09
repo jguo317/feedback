@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>360feedback</name>
-	<comment>JavaCC Nature</comment>
+	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
-		<buildCommand>
-			<name>sf.eclipse.javacc.javaccbuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -31,6 +26,5 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
-		<nature>sf.eclipse.javacc.javaccnature</nature>
 	</natures>
 </projectDescription>
