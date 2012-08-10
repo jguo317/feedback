@@ -8,5 +8,5 @@ public class Constant {
 	public final static String EMAIL_FROM = "jay.guo@activenetwork.com";
 	public final static String EMAIL_SUBJECT = "360Feedback";
 	
-	public final static String LOCAL_HOST = "http://wd00070228.active.local:8080/";
+	public final static String LOCAL_HOST = "http://wl00070079.active.local:8080/";
 }
